@@ -33,7 +33,7 @@ jobs:
       run: |
         value_needed=`echo "patranias"`
         sleep 10
-        echo  $value_needed
+        echo  $value_needed > value_needed.txt
   
 #    - name: Build and Push Docker Image
 #      uses: mr-smithers-excellent/docker-build-push@v5
