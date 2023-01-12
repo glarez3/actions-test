@@ -29,13 +29,18 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
     
-    - name: Depends Step
+    - name: Depends Step 
       run: |
         value_needed=`echo "patranias"`
         sleep 10
         echo  $value_needed > value_needed.txt
-        cat value_needed.txt
-  
+        if: $value_needed == "patranias"
+        run: `echo "Exito!"`
+        if: $value_needed == "no_exito"
+        run: `echo "Muelte!`
+
+      
+    
 #    - name: Build and Push Docker Image
 #      uses: mr-smithers-excellent/docker-build-push@v5
 #      with:
