@@ -5,9 +5,9 @@ name: Java CI with Gradle
 
 on:
   push:
-    branches: [ main ]
+    branches: [ feature/depends ]
   pull_request:
-    branches: [ main ]
+    branches: [ feature/depends ]
 
 jobs:
   build-java:
@@ -28,11 +28,17 @@ jobs:
 
     - name: Build with Gradle
       run: ./gradlew build
+    
+    - name: Depends Step
+      run: |
+        value_needed=`echo "patranias"`
+        sleep 10
+        echo  $value_needed
   
-    - name: Build and Push Docker Image
-      uses: mr-smithers-excellent/docker-build-push@v5
-      with:
-        image: glarez3/actions-test
-        registry: docker.io
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+#    - name: Build and Push Docker Image
+#      uses: mr-smithers-excellent/docker-build-push@v5
+#      with:
+#        image: glarez3/actions-test
+#        registry: docker.io
+#        username: ${{ secrets.DOCKERHUB_USERNAME }}
+#       password: ${{ secrets.DOCKERHUB_PASSWORD }}
