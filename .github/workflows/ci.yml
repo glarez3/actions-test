@@ -25,6 +25,11 @@ jobs:
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
+    
+    - name: Collect Workflow Telemetry
+      uses: runforesight/workflow-telemetry-action@v1
+      with:
+        theme: dark
 
     - name: Build with Gradle
       run: ./gradlew build
